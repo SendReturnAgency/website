@@ -106,8 +106,21 @@ p + p {
   color: var(--bg);
 }
 .arrow {
-  font-size: 22px;
+  font-size: 17px;
   line-height: 1;
+}
+/* Consistent SVG arrow sizes, including links without an .arrow wrapper. */
+.pill svg[aria-hidden="true"] {
+  width: 17px;
+  height: 17px;
+}
+.profile-links .pill svg[aria-hidden="true"] {
+  width: 15px;
+  height: 15px;
+}
+.footer svg[aria-hidden="true"] {
+  width: 13px;
+  height: 13px;
 }
 
 /* 02 — Shared navigation */
@@ -1090,7 +1103,7 @@ body:has(dialog[open]) {
   position: absolute;
   right: 0;
   bottom: 4px;
-  font-size: 32px;
+  font-size: 24px;
 }
 .booking-section {
   padding: 75px 0 100px;
@@ -1207,7 +1220,7 @@ body:has(dialog[open]) {
     font-size: 9px;
   }
   .artist-open {
-    font-size: 25px;
+    font-size: 20px;
   }
   .booking-section {
     padding: 60px 0 70px;
@@ -1483,7 +1496,7 @@ body:has(dialog[open]) {
   box-shadow: 0 0 12px #fff6;
 }
 .intro-arrow {
-  font-size: 22px;
+  font-size: 16px;
   opacity: 0;
   transition: opacity 0.2s;
 }
@@ -1533,7 +1546,7 @@ body:has(dialog[open]) {
   font-size: 13px;
 }
 .intro-choice .intro-arrow {
-  font-size: 20px;
+  font-size: 16px;
 }
 @media (max-width: 767.98px) {
   .intro-choice {
