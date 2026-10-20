@@ -96,8 +96,12 @@
       target === "index.html"
     )
       return;
+    // A scene can remain unfinished while its sphere is still on screen or
+    // rendering is paused. Never swallow a second navigation in that state:
+    // let the browser follow the ordinary HTML link instead.
+    if (switching) return;
     event.preventDefault();
-    if (!switching) navigate(url.href);
+    navigate(url.href);
   });
 
   window.addEventListener("popstate", () => {
