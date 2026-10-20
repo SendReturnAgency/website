@@ -1706,3 +1706,15 @@ body:has(dialog[open]) {
     animation: none;
   }
 }
+
+/* Keep each philosophy phrase on one line within its actual grid column. */
+.philosophy h2.philosophy-title {
+  min-width: 0;
+  container-type: inline-size;
+}
+.philosophy-title > span {
+  display: block;
+  white-space: nowrap;
+  font-size: min(1em, 9.5cqw);
+  line-height: 1.08;
+}
