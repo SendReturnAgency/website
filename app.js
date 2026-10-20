@@ -113,9 +113,9 @@
       const data = new FormData(form);
       const subject = `Send Return enquiry — ${data.get("name")}`;
       const body = `Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`;
-      window.location.href = `mailto:booking@sendreturn.ch?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:bookings@sendreturn.ch?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       document.querySelector(".form-status").textContent =
-        "Your email draft is ready in your email app. Please send it there, or contact booking@sendreturn.ch directly.";
+        "Your email draft is ready in your email app. Please send it there, or contact bookings@sendreturn.ch directly.";
     });
   // Photo lightbox and shared dialog controls.
   const lightbox = document.querySelector("#lightbox");
