@@ -445,6 +445,7 @@ p + p {
 }
 .philosophy h2 {
   font-size: clamp(48px, 5.4vw, 79px);
+  letter-spacing: -0.035em;
 }
 .philosophy h3 {
   font-size: 25px;
