@@ -55,6 +55,11 @@ img {
   max-width: 100%;
   display: block;
 }
+/* Page transitions focus the heading for screen readers. It is not a control;
+   suppress the native WebKit focus ring only on this navigation destination. */
+.hero h1[tabindex="-1"]:focus {
+  outline: none;
+}
 h1,
 h2,
 h3,
