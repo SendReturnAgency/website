@@ -111,11 +111,12 @@
       const form = event.currentTarget;
       if (!form.reportValidity()) return;
       const data = new FormData(form);
+      const recipient = form.dataset.recipient || "bookings@sendreturn.ch";
       const subject = `Send Return enquiry — ${data.get("name")}`;
       const body = `Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`;
-      window.location.href = `mailto:bookings@sendreturn.ch?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       document.querySelector(".form-status").textContent =
-        "Your email draft is ready in your email app. Please send it there, or contact bookings@sendreturn.ch directly.";
+        `Your email draft is ready in your email app. Please send it there, or contact ${recipient} directly.`;
     });
   // Photo lightbox and shared dialog controls.
   const lightbox = document.querySelector("#lightbox");
