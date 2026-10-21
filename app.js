@@ -111,7 +111,14 @@
       const form = event.currentTarget;
       if (!form.reportValidity()) return;
       const data = new FormData(form);
-      const recipient = form.dataset.recipient || "bookings@sendreturn.ch";
+      // Resolve Creative from the current page too, so older cached HTML and
+      // agency-transition snapshots still use the correct contact address.
+      const isCreative =
+        /\/creative(?:\.html)?\/?$/.test(window.location.pathname) ||
+        /\/creative-agency\/?$/.test(window.location.pathname);
+      const recipient = isCreative
+        ? "hello@sendreturn.ch"
+        : form.dataset.recipient || "bookings@sendreturn.ch";
       const subject = `Send Return enquiry — ${data.get("name")}`;
       const body = `Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`;
       window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
