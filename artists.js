@@ -25,11 +25,12 @@
       id: "caridino",
       booking: "https://forms.cloud.microsoft/e/fuXNx2FHsh",
       name: "Caridino",
-      genres: "Indie Dance / Tech House",
+      photo: "assets/caridino-2026.jpg",
+      genres: "Tech House / Indie Tech",
       based: "St. Gallen",
       instagram: "https://www.instagram.com/caridino/",
       music: "https://soundcloud.com/caridino",
-      bio: "Caridino is an emerging voice in Switzerland’s electronic music scene – rooted in St. Gallen, with a heart beating to the rhythms of Indie Dance and Tech House. Her sets move between driving energy and sensual depth, between euphoria and introspection. With a fine sense for atmosphere and dramaturgy, Caridino knows how to take her audience on a musical journey. Each performance tells a story – sometimes playful, sometimes driving, always with a clear signature and full of groove. Her music is constantly evolving, surprising, creating closeness and connection. Those who experience her instantly feel: here, music becomes a language that speaks straight to the heart.",
+      bio: "Caridino is a Swiss DJ shaping high-energy dancefloors. Her sound blends groovy, vocal-driven tech house with melodic textures, moving between playful rhythms and powerful momentum. Guided by instinct, emotion and a deep connection to the crowd, her sets are fluid, dynamic and built to move people. She brings a strong, positive energy that is felt instantly, paired with a captivating presence that lights up the room — creating moments of movement and connection.",
     },
     {
       id: "aiia",
@@ -47,7 +48,7 @@
     button.addEventListener("click", () => {
       const artist = artists.find((a) => a.id === button.dataset.artist);
       artistDialog.querySelector(".profile-photo").src =
-        "assets/" + artist.id + ".jpg";
+        artist.photo || "assets/" + artist.id + ".jpg";
       artistDialog.querySelector(".profile-photo").alt = artist.name;
       artistDialog.querySelector("#artist-name").textContent = artist.name;
       artistDialog.querySelector(".profile-genres").textContent = artist.genres;
