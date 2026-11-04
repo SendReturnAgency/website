@@ -57,7 +57,19 @@
   ];
   const buttons = [...document.querySelectorAll(".service")],
     detail = document.querySelector(".service-detail");
+  const mobileServices = matchMedia("(max-width:700px)");
+  const detailHome = detail ? document.createComment("Service detail desktop position") : null;
+  if (detail) detail.before(detailHome);
   let active = null;
+  function positionServiceDetail() {
+    if (!detail) return;
+    if (mobileServices.matches && active !== null) {
+      buttons[active].insertAdjacentElement("afterend", detail);
+    } else {
+      detailHome.after(detail);
+    }
+  }
+  mobileServices.addEventListener("change", positionServiceDetail);
   function closeService() {
     if (!detail) return;
     detail.hidden = true;
@@ -75,6 +87,7 @@
       }
       closeService();
       active = i;
+      positionServiceDetail();
       const d = serviceData[i];
       button.setAttribute("aria-expanded", "true");
       button.querySelector(".plus").textContent = "−";
@@ -90,8 +103,8 @@
         }),
       );
       detail.hidden = false;
-      if (matchMedia("(max-width:700px)").matches)
-        detail.scrollIntoView({
+      if (mobileServices.matches)
+        button.scrollIntoView({
           block: "start",
           behavior: matchMedia("(prefers-reduced-motion:reduce)").matches
             ? "instant"
