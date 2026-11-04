@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap");
 
 /* 01 — Design tokens and base elements */
 :root {
@@ -8,6 +8,7 @@
   --muted: #b2b1ac;
   --line: #41413e;
   --surface: #1b1b1a;
+  --accent: #E96855;
 }
 * {
   box-sizing: border-box;
@@ -70,11 +71,14 @@ h1,
 h2,
 h3 {
   line-height: 1.05;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.02em;
 }
 h1,
-h2 {
-  font-weight: 900;
+h2,
+h3,
+.metric strong {
+  font-family: "Space Grotesk", Inter, Arial, sans-serif;
+  font-weight: 700;
 }
 p + p {
   margin-top: 22px;
@@ -107,8 +111,9 @@ p + p {
     color 0.2s;
 }
 .pill:hover {
-  background: var(--text);
-  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #101010;
 }
 .arrow {
   font-size: 17px;
@@ -335,7 +340,7 @@ p + p {
 .service h3 {
   margin-top: 93px;
   font-size: 21px;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 .service .short {
@@ -359,7 +364,7 @@ p + p {
 }
 .service-detail h3 {
   font-size: 35px;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
   margin-top: 22px;
   line-height: 1.18;
 }
@@ -450,7 +455,7 @@ p + p {
 }
 .philosophy h2 {
   font-size: clamp(48px, 5.4vw, 79px);
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
 }
 .philosophy h3 {
   font-size: 25px;
@@ -559,8 +564,8 @@ textarea {
 }
 .metric strong {
   font-size: clamp(46px, 5vw, 78px);
-  font-weight: 900;
-  letter-spacing: -0.05em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   line-height: 1;
 }
 .metric p {
@@ -1103,7 +1108,7 @@ body:has(dialog[open]) {
 .artist-caption h3 {
   font-size: clamp(32px, 3.8vw, 56px);
   margin-top: 13px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .artist-open {
   position: absolute;
@@ -1646,9 +1651,9 @@ body:has(dialog[open]) {
 /* Artist hero: restore the prominent original header typography. */
 .artist-hero h1 {
   font-size: clamp(72px, 8vw, 120px);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.05;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.02em;
   max-width: 780px;
 }
 .artist-hero .hero-copy {
@@ -1722,4 +1727,9 @@ body:has(dialog[open]) {
   white-space: nowrap;
   font-size: min(1em, 9.5cqw);
   line-height: 1.08;
+}
+
+/* Override the retained inline tracking on the two-line philosophy headline. */
+.philosophy h2.philosophy-title {
+  letter-spacing: -0.02em !important;
 }
