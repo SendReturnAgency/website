@@ -1733,3 +1733,137 @@ body:has(dialog[open]) {
 .philosophy h2.philosophy-title {
   letter-spacing: -0.02em !important;
 }
+
+/* Case study: give four results and the session media their own full-width rows. */
+.case-context.case-story {
+  display: block;
+}
+.case-story > div:first-child {
+  max-width: 820px;
+}
+.case-story > div + div {
+  margin-top: 48px;
+}
+.case-results.metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+}
+.case-results .metric {
+  min-width: 0;
+  container-type: inline-size;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+.case-results .metric strong {
+  display: block;
+  font-size: clamp(30px, 4.5vw, 64px);
+  font-size: clamp(30px, 18cqw, 64px);
+  white-space: nowrap;
+}
+.case-results .metric p,
+.case-results .metric small {
+  overflow-wrap: anywhere;
+}
+.case-sessions {
+  border-top: 1px solid var(--line);
+  padding-block: 60px 80px;
+}
+.case-sessions-intro {
+  max-width: 900px;
+  margin-bottom: 36px;
+}
+.case-sessions-intro h2 {
+  font-size: clamp(32px, 4.5vw, 64px);
+  margin: 18px 0 24px;
+}
+.case-sessions-intro > p:last-child {
+  max-width: 720px;
+  color: var(--muted);
+}
+.case-session-media,
+.case-session-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 32px;
+}
+.case-session-media > div,
+.case-session-details > div {
+  min-width: 0;
+}
+.case-session-media img.sessions-landscape {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.case-session-details {
+  margin-top: 40px;
+}
+.case-session-summary p {
+  max-width: 520px;
+  color: var(--muted);
+}
+.case-session-summary .pill {
+  margin-top: 24px;
+}
+.case-session-details h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+@media (max-width: 1000px) {
+  .case-results.metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .case-session-media,
+  .case-session-details {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+  .case-sessions {
+    padding-block: 40px 55px;
+  }
+}
+@media (max-width: 479px) {
+  .case-results.metrics {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+}
+
+/* Project credits live in normal document flow, outside the photographic hero. */
+.case-credits-section {
+  padding-block: 32px;
+  border-bottom: 1px solid var(--line);
+}
+.case-credits {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1.5fr 1.5fr 0.5fr;
+  gap: 24px 32px;
+  margin: 0;
+}
+.case-credits > div {
+  min-width: 0;
+}
+.case-credits dt {
+  margin-bottom: 8px;
+}
+.case-credits dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 1000px) {
+  .case-credits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 479px) {
+  .case-credits {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+}
