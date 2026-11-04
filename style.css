@@ -1950,3 +1950,9 @@ body:has(dialog[open]) {
   margin: 0 0 24px;
   color: var(--text);
 }
+
+@media (min-width: 1001px) {
+  .case-results-six.metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
