@@ -1942,3 +1942,11 @@ body:has(dialog[open]) {
     gap: 20px;
   }
 }
+
+/* Creative introduction: title and supporting copy share the right column. */
+.intro .body .intro-copy-title {
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height: 1.15;
+  margin: 0 0 24px;
+  color: var(--text);
+}
