@@ -2000,3 +2000,12 @@ html[lang^="de"] .case-sessions-intro h2 {
   }
   .header .nav > a.pill { order: 2; }
 }
+
+/* Keep the agency CTA at the outer right edge; languages sit before it. */
+.header .navlinks {
+  margin-left: auto;
+}
+.header .navlinks .language-switch {
+  margin-left: 0;
+  order: 0;
+}
