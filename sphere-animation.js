@@ -199,7 +199,7 @@
       hero.classList.add("animation-ready");
       canvas.style.opacity = "1";
       hero.transferAgencyScene = (nextHero, target) => {
-        const nextSide = target === "artist.html" ? "right" : "left";
+        const nextSide = (target === "artist.html" || target === "artist-de.html") ? "right" : "left";
         // On the intro, the unselected sphere departs; the selected one stays live.
         const departingSide = isIntro
           ? nextSide === "left"

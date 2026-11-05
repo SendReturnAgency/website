@@ -5,10 +5,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const pages = {};
-for (const name of ["index.html", "creative.html", "artist.html"]) {
+for (const name of ["index.html", "index-de.html", "creative.html", "creative-de.html", "artist.html", "artist-de.html"]) {
   const html = await fs.readFile(path.join(root, name), "utf8");
   const [, attributes, body] = html.match(/<body([^>]*)>([\s\S]*?)<\/body>/i);
   pages[name] = {
+    lang: html.match(/<html[^>]*lang="([^"]*)"/i)?.[1] || "en",
     title: html.match(/<title>([\s\S]*?)<\/title>/i)[1],
     description:
       html.match(/name="description"\s+content="([^"]*)"/i)?.[1] || "",

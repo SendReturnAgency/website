@@ -1956,3 +1956,47 @@ body:has(dialog[open]) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+/* Bilingual navigation: preserve the page and provide an explicit language choice. */
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: auto;
+  font: 600 12px/1 Inter, Arial, sans-serif;
+}
+.language-switch a {
+  display: inline-flex;
+  min-width: 32px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+.language-switch a[aria-current="page"] {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+html[lang^="de"] .philosophy-title > span {
+  font-size: min(1em, 8cqw);
+}
+html[lang^="de"] .case-local-talents h3,
+html[lang^="de"] .case-sessions-intro h2 {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 700px) {
+  .header .nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .header .language-switch { order: 1; }
+  .header .navlinks {
+    order: 2;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+  .header .nav > a.pill { order: 2; }
+}

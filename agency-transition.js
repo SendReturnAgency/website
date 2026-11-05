@@ -14,7 +14,7 @@
   function reloadScript(source) {
     return new Promise((resolve, reject) => {
       const script = document.createElement("script");
-      script.src = source;
+      script.src = source + "?v=20261105-bilingual";
       script.onload = () => {
         script.remove();
         resolve();
@@ -29,7 +29,7 @@
 
   async function navigate(url, updateHistory = true) {
     const name = pageName(url);
-    if (name === "index.html") {
+    if (name === "index.html" || name === "index-de.html") {
       location.assign(url);
       return;
     }
@@ -44,6 +44,7 @@
       // Keep the existing renderer alive while the page content changes.
       if (!transfer)
         window.dispatchEvent(new Event("sendreturn:before-page-swap"));
+      document.documentElement.lang = page.lang || "en";
       document.body.className = page.bodyClass;
       document.body.replaceChildren(...next.body.childNodes);
       document.querySelector(".hero-copy")?.classList.add("agency-arrival");
@@ -53,11 +54,20 @@
       document.title = page.title;
       const description = document.querySelector('meta[name="description"]');
       if (description) description.content = page.description;
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) canonical.href = new URL(name, location.href).href;
+      const base = name.replace(/-de\.html$/, ".html");
+      const alternateEn = document.querySelector('link[rel="alternate"][hreflang="en"]');
+      const alternateDe = document.querySelector('link[rel="alternate"][hreflang="de-CH"]');
+      if (alternateEn) alternateEn.href = new URL(base, location.href).href;
+      if (alternateDe) alternateDe.href = new URL(base.replace(".html", "-de.html"), location.href).href;
       if (updateHistory) history.pushState({ agency: name }, "", url);
       window.scrollTo({ top: 0, behavior: "instant" });
 
-      await reloadScript("app.js");
-      if (name === "artist.html") await reloadScript("artists.js");
+      const german = name.endsWith("-de.html");
+      await reloadScript(german ? "app-de.js" : "app.js");
+      if (name === "artist.html" || name === "artist-de.html")
+        await reloadScript(german ? "artists-de.js" : "artists.js");
       if (movement) await movement;
       else await reloadScript("sphere-animation.js");
       const heading = document.querySelector("h1");
@@ -83,7 +93,7 @@
     )
       return;
     const link = event.target.closest("a[href]");
-    if (!link || link.target === "_blank" || link.hasAttribute("download"))
+    if (!link || link.target === "_blank" || link.hasAttribute("download") || link.hasAttribute("data-language-switch"))
       return;
     const url = new URL(link.href, location.href);
     if (url.origin !== location.origin || url.hash || url.search) return;
@@ -93,7 +103,8 @@
       !pages[current] ||
       !pages[target] ||
       current === target ||
-      target === "index.html"
+      target === "index.html" ||
+      target === "index-de.html"
     )
       return;
     // A scene can remain unfinished while its sphere is still on screen or

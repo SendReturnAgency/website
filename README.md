@@ -1,20 +1,24 @@
 # Send Return website
 
-Static website for https://sendreturn.ch.
+Bilingual static site for https://sendreturn.ch.
 
-## GitHub Pages
+## Pages
 
-Upload the contents of this folder to the root of the `website` repository.
-In Settings → Pages select Deploy from a branch, main, / (root).
-Set the custom domain to sendreturn.ch before changing DNS.
-Enable Enforce HTTPS when the certificate becomes available.
+English: index.html, creative.html, artist.html, case.html.
+German: index-de.html, creative-de.html, artist-de.html, case-de.html.
+Artist biographies remain in English on both Artist pages.
+The legal notice remains in English and is labelled accordingly on German pages.
 
 ## Editing
 
-Main pages: index.html, creative.html, artist.html, case.html.
-Artist profiles and individual booking links: artists.js.
-Styles: style.css. Assets: assets/. Sphere animation: sphere-animation.js.
-After editing index.html, creative.html or artist.html run:
+Shared styles: style.css. English interactions: app.js. German interactions: app-de.js.
+Profiles and booking URLs: artists.js and artists-de.js.
+After changing any intro or agency HTML, run:
 node tools/build-transition-pages.mjs
+Do not run the historical prototype scripts from the separate working directory.
 
-Keep CNAME and .nojekyll in the repository root.
+## Publishing
+
+Upload this folder's CONTENTS to the root of SendReturnAgency/website, replacing matching files.
+Keep CNAME and .nojekyll at the root. GitHub Pages: main, / (root), domain sendreturn.ch.
+No DNS changes are needed.
