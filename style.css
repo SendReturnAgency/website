@@ -2009,3 +2009,46 @@ html[lang^="de"] .case-sessions-intro h2 {
   margin-left: 0;
   order: 0;
 }
+
+/* Compact agency navigation stays level with the logo on small screens. */
+@media (max-width: 700px) {
+  .header .nav:has(> .navlinks) {
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: calc(100% - 32px);
+  }
+  .header .nav:has(> .navlinks) > a:first-child {
+    flex: 0 1 140px;
+    min-width: 80px;
+  }
+  .header .nav:has(> .navlinks) .logo {
+    width: 100%;
+    max-width: 140px;
+    height: auto;
+  }
+  .header .nav > .navlinks {
+    width: auto;
+    order: 0;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+  .header .navlinks .language-switch {
+    gap: 3px;
+    font-size: 10px;
+  }
+  .header .navlinks .language-switch a {
+    min-width: 23px;
+  }
+  .header .navlinks .pill {
+    white-space: nowrap;
+    gap: 8px;
+    padding: 9px 10px;
+    font-size: 9px;
+  }
+}
+@media (max-width: 360px) {
+  .header .nav:has(> .navlinks) { gap: 8px; }
+  .header .nav > .navlinks { gap: 7px; }
+  .header .navlinks .pill { padding-inline: 8px; gap: 6px; }
+}
