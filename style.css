@@ -2052,3 +2052,46 @@ html[lang^="de"] .case-sessions-intro h2 {
   .header .nav > .navlinks { gap: 7px; }
   .header .navlinks .pill { padding-inline: 8px; gap: 6px; }
 }
+
+/* One explicit header row for both agency pages, independent of older flex rules. */
+.header .nav.agency-nav {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: center;
+  gap: 24px;
+}
+.header .agency-nav > a:first-child {
+  display: block;
+  min-width: 0;
+}
+.header .agency-nav > .navlinks {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: auto;
+  margin-left: 0;
+  order: 0;
+}
+.header .agency-nav .navlinks > .language-switch,
+.header .agency-nav .navlinks > .pill {
+  order: 0;
+  flex-shrink: 0;
+  align-self: center;
+  margin-block: 0;
+}
+@media (max-width: 700px) {
+  .header .nav.agency-nav {
+    width: calc(100% - 32px);
+    grid-template-columns: minmax(0, 1fr) max-content;
+    gap: 10px;
+  }
+  .header .agency-nav .logo {
+    width: 100%;
+    max-width: 140px;
+    height: auto;
+  }
+  .header .agency-nav > .navlinks {
+    gap: 8px;
+  }
+}
