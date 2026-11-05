@@ -2095,3 +2095,32 @@ html[lang^="de"] .case-sessions-intro h2 {
     gap: 8px;
   }
 }
+
+/* Sound remains reachable while scrolling, with an iPhone-safe bottom offset. */
+.site-sound {
+  position: fixed;
+  left: max(24px, env(safe-area-inset-left));
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font: 500 11px/1 Inter, Arial, sans-serif;
+}
+.site-sound svg { flex-shrink: 0; }
+.site-sound:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
+.site-sound[aria-busy="true"] { cursor: progress; }
+body:has(dialog[open]) .site-sound { visibility: hidden; }
+@media (max-width: 700px) {
+  .site-sound {
+    left: max(16px, env(safe-area-inset-left));
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  }
+}

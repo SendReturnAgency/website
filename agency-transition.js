@@ -47,6 +47,7 @@
       document.documentElement.lang = page.lang || "en";
       document.body.className = page.bodyClass;
       document.body.replaceChildren(...next.body.childNodes);
+      window.SendReturnSound?.mount();
       document.querySelector(".hero-copy")?.classList.add("agency-arrival");
       const movement = transfer
         ? transfer(document.querySelector(".hero"), name)
